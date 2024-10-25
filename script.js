@@ -1,14 +1,18 @@
-const result = document.querySelector('.resultado');
+const result = document.querySelector('.result');
 const buttons = document.querySelectorAll('.buttons button');
+
 let currentNumber = "";
 let firstOperand = null;
 let operator = null;
 let restart = false;
+
+
 function updateResult(originClear = false) { 
     result.innerText = originClear ? 0 : currentNumber.replace(".", ",")
 }
 function addDigit(digit) { 
     if (digit === "," && (currentNumber.includes(",") || !currentNumber)) return;
+    
     if (restart) {
         currentNumber = digit;
         restart = false;
@@ -17,6 +21,7 @@ function addDigit(digit) {
     }
     updateResult()
 }
+
 function setOperator(newOperator) {
     if (currentNumber) {
         calculate()
@@ -66,6 +71,7 @@ function clearCalculator() {
     operator = null;
     updateResult(true)
 }
+
 function setPercentage() {
     let result = parseFloat(currentNumber) / 100;
     if (["+", "-"].includes(operator)) {
@@ -77,6 +83,7 @@ function setPercentage() {
     currentNumber = result.toString();
     updateResult()
 }
+
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         const buttonText = button.innerText;
@@ -98,8 +105,10 @@ buttons.forEach((button) => {
         }
     })
 })
+
 document.addEventListener("keydown", (event) => {
   const key = event.key;
+
   if (!isNaN(key) || key === ",") {
     addDigit(key === "." ? "," : key);
   } else if (["+", "-", "*", "/"].includes(key)) {
