@@ -11,7 +11,7 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
-.calculator {
+.calculadora {
     width: 600px;
     border: #000000 2px solid;
     background-color: #b0b0b0;
@@ -24,7 +24,7 @@ body {
     }
 }
 
-.result {
+.resultado {
     height: 200px;
     padding: 20px;
     text-align: right;
